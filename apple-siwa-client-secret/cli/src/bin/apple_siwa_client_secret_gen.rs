@@ -1,5 +1,10 @@
 /*
 cargo run -p apple-siwa-client-secret-cli --bin apple_siwa_client_secret_gen -- 'key_id' '/path/AuthKey_xxx.p8' 'team_id' 'client_id'
+
+Or
+
+cargo install apple-siwa-client-secret-cli
+apple_siwa_client_secret_gen 'key_id' '/path/AuthKey_xxx.p8' 'team_id' 'client_id'
 */
 
 use std::{env, error, fs};
