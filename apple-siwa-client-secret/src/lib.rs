@@ -25,7 +25,7 @@ pub struct Claims {
 
 pub fn create(
     key_id: impl AsRef<str>,
-    p8_auth_key_bytes: &[u8],
+    p8_auth_key_bytes: impl AsRef<[u8]>,
     team_id: impl AsRef<str>,
     client_id: impl AsRef<str>,
     issued_at: impl Into<Option<DateTime<Utc>>>,
@@ -35,7 +35,8 @@ pub fn create(
     let pkey = PKeyWithDigest {
         digest: MessageDigest::sha256(),
         key: PKey::from_ec_key(
-            EcKey::private_key_from_pem(p8_auth_key_bytes).map_err(CreateError::MakeEcKeyFailed)?,
+            EcKey::private_key_from_pem(p8_auth_key_bytes.as_ref())
+                .map_err(CreateError::MakeEcKeyFailed)?,
         )
         .map_err(CreateError::MakePKeyFailed)?,
     };

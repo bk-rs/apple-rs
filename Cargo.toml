@@ -1,4 +1,5 @@
 [workspace]
 members = [
     "apple-siwa-client-secret",
+    "apple-siwa-client-secret/cli",
 ]

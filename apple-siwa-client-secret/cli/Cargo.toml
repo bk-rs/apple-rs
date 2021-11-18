@@ -1,0 +1,20 @@
+[package]
+name = "apple-siwa-client-secret-cli"
+version = "0.1.0"
+authors = ["vkill <vkill.net@gmail.com>"]
+edition = "2021"
+description = "Apple - Sign in with Apple - Client Secret"
+license = "Apache-2.0 OR MIT"
+repository = "https://github.com/bk-rs/apple-rs"
+homepage = "https://github.com/bk-rs/apple-rs"
+documentation = "https://docs.rs/apple-siwa-client-secret-cli"
+keywords = []
+categories = []
+readme = "README.md"
+
+[[bin]]
+name = "apple_siwa_client_secret_gen"
+path = "src/bin/apple_siwa_client_secret_gen.rs"
+
+[dependencies]
+apple-siwa-client-secret = { version = "^0.1", path = "../" }
