@@ -1,5 +1,7 @@
 [workspace]
 members = [
+    "apple-search-ads-client-secret",
+    "apple-search-ads-client-secret/cli",
     "apple-siwa-client-secret",
     "apple-siwa-client-secret/cli",
 ]

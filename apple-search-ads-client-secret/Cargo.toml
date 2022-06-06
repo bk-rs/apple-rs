@@ -1,13 +1,13 @@
 [package]
-name = "apple-siwa-client-secret"
+name = "apple-search-ads-client-secret"
 version = "0.1.0"
 authors = ["vkill <vkill.net@gmail.com>"]
 edition = "2021"
-description = "Apple - Sign in with Apple - Client Secret"
+description = "Apple - Search Ads - Client Secret"
 license = "Apache-2.0 OR MIT"
 repository = "https://github.com/bk-rs/apple-rs"
 homepage = "https://github.com/bk-rs/apple-rs"
-documentation = "https://docs.rs/apple-siwa-client-secret"
+documentation = "https://docs.rs/apple-search-ads-client-secret"
 keywords = []
 categories = []
 readme = "README.md"
