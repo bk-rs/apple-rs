@@ -82,3 +82,47 @@ impl fmt::Display for CreateError {
     }
 }
 impl error::Error for CreateError {}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_create() {
+        const PEM_PRIVATE_KEY: &str = r#"
+-----BEGIN EC PRIVATE KEY-----
+MHcCAQEEIKtnxllRY8nbndBQwT9we4pEULtjpW605iwvzLlKcBq4oAoGCCqGSM49
+AwEHoUQDQgAEY58v74eQFyLtu5rtCpeU4NggVSUQSOcHhN744t0gWGc/xXkCSusz
+LaZriCQnnqq4Vx+IscLFcrjBj+ulZzKlUQ==
+-----END EC PRIVATE KEY-----
+        "#;
+
+        const CLIENT_ID: &str = "SEARCHADS.27478e71-3bb0-4588-998c-182e2b405577";
+        const TEAM_ID: &str = "SEARCHADS.27478e71-3bb0-4588-998c-182e2b405577";
+        const KEY_ID: &str = "bacaebda-e219-41ee-a907-e2c25b24d1b2";
+
+        let secret = create(
+            KEY_ID,
+            PEM_PRIVATE_KEY,
+            TEAM_ID,
+            CLIENT_ID,
+            "2022-06-06T00:00:00Z".parse::<DateTime<Utc>>().unwrap(),
+            Duration::from_secs(3600 * 24 * 180),
+        )
+        .unwrap();
+
+        /*
+        eyJhbGciOiJFUzI1NiIsImtpZCI6ImJhY2FlYmRhLWUyMTktNDFlZS1hOTA3LWUyYzI1YjI0ZDFiMiJ9.eyJpc3MiOiJTRUFSQ0hBRFMuMjc0NzhlNzEtM2JiMC00NTg4LTk5OGMtMTgyZTJiNDA1NTc3IiwiaWF0IjoxNjU0NDczNjAwLCJleHAiOjE2NzAwMjU2MDAsImF1ZCI6Imh0dHBzOi8vYXBwbGVpZC5hcHBsZS5jb20iLCJzdWIiOiJTRUFSQ0hBRFMuMjc0NzhlNzEtM2JiMC00NTg4LTk5OGMtMTgyZTJiNDA1NTc3In0.bN3KRWDJft-rjqRbOuuzfsImPT4RPEy01ILYJRBe4v_WJtJdi-7xBpi9UCcSN1WRe3Ozobvou5ruxXjVFnB_6Q
+        */
+
+        println!("{}", secret);
+        let mut split = secret.split('.');
+        assert_eq!(
+            split.next().unwrap(),
+            "eyJhbGciOiJFUzI1NiIsImtpZCI6ImJhY2FlYmRhLWUyMTktNDFlZS1hOTA3LWUyYzI1YjI0ZDFiMiJ9"
+        );
+        assert_eq!(split.next().unwrap() , "eyJpc3MiOiJTRUFSQ0hBRFMuMjc0NzhlNzEtM2JiMC00NTg4LTk5OGMtMTgyZTJiNDA1NTc3IiwiaWF0IjoxNjU0NDczNjAwLCJleHAiOjE2NzAwMjU2MDAsImF1ZCI6Imh0dHBzOi8vYXBwbGVpZC5hcHBsZS5jb20iLCJzdWIiOiJTRUFSQ0hBRFMuMjc0NzhlNzEtM2JiMC00NTg4LTk5OGMtMTgyZTJiNDA1NTc3In0");
+        split.next();
+        assert!(split.next().is_none());
+    }
+}
