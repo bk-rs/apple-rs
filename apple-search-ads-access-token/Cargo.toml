@@ -1,0 +1,30 @@
+[package]
+name = "apple-search-ads-access-token"
+version = "0.1.0"
+authors = ["vkill <vkill.net@gmail.com>"]
+edition = "2021"
+description = "Apple - Search Ads - Access Token"
+license = "Apache-2.0 OR MIT"
+repository = "https://github.com/bk-rs/apple-rs"
+homepage = "https://github.com/bk-rs/apple-rs"
+documentation = "https://docs.rs/apple-search-ads-access-token"
+keywords = []
+categories = []
+readme = "README.md"
+
+[dependencies]
+apple-search-ads-client-secret = { version = "0.2", default-features = false }
+oauth2-apple = { version = "0.1", default-features = false }
+oauth2-client = { version = "0.1", default-features = false, features = ["with-flow"] }
+
+http-api-isahc-client = { version = "0.2", default-features = false }
+
+arc-swap = { version = "1", default-features = false }
+once_cell = { version = "1", default-features = false }
+
+async-sleep = { version = "0.2", default-features = false, features = ["timeout"] }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+
+async-sleep = { version = "0.2", features = ["impl_tokio"] }
