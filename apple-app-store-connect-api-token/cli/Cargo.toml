@@ -1,7 +1,16 @@
 [package]
 name = "apple-app-store-connect-api-token-cli"
 version = "0.1.0"
+authors = ["vkill <vkill.net@gmail.com>"]
 edition = "2021"
+description = "Apple - App Store Connect API - Token Cli"
+license = "Apache-2.0 OR MIT"
+repository = "https://github.com/bk-rs/apple-rs"
+homepage = "https://github.com/bk-rs/apple-rs"
+documentation = "https://docs.rs/apple-app-store-connect-api-token-cli"
+keywords = []
+categories = []
+readme = "README.md"
 
 [[bin]]
 name = "apple_app_store_connect_api_token_gen"
