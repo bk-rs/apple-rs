@@ -1,0 +1,11 @@
+[package]
+name = "apple-app-store-connect-api-token-cli"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "apple_app_store_connect_api_token_gen"
+path = "src/bin/apple_app_store_connect_api_token_gen.rs"
+
+[dependencies]
+apple-app-store-connect-api-token = { version = "^0.1", path = "../" }

@@ -1,5 +1,7 @@
 [workspace]
 members = [
+    "apple-app-store-connect-api-token",
+    "apple-app-store-connect-api-token/cli",
     "apple-search-ads-access-token",
     "apple-search-ads-client-secret",
     "apple-search-ads-client-secret/cli",

@@ -1,0 +1,9 @@
+[package]
+name = "apple-app-store-connect-api-token"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+jsonwebtoken = { version = "8", default-features = false, features = ["use_pem"] }
+serde = { version = "1", default-features = false, features = ["derive"] }
+chrono = { version = "0.4", default-features = false, features = ["clock", "serde"] }
