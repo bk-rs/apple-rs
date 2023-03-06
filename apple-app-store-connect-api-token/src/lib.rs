@@ -1,6 +1,6 @@
 //! [Doc](https://developer.apple.com/documentation/appstoreconnectapi/generating_tokens_for_api_requests)
 
-use core::{fmt, time::Duration};
+use core::time::Duration;
 
 use chrono::{serde::ts_seconds, DateTime, Duration as ChronoDuration, Utc};
 use jsonwebtoken::{encode, errors::Error as JsonwebtokenError, Algorithm, EncodingKey, Header};
@@ -67,9 +67,9 @@ pub enum CreateError {
     MakeEncodingKeyFailed(JsonwebtokenError),
     EncodeFailed(JsonwebtokenError),
 }
-impl fmt::Display for CreateError {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{:?}", self)
+impl core::fmt::Display for CreateError {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        write!(f, "{self:?}")
     }
 }
 impl std::error::Error for CreateError {}
@@ -105,7 +105,7 @@ LjUOxL+a+60LCYQsO4O9fzi1klyzxSa3n2ZUvjNkiqlbxufipiYejOZk
         )
         .unwrap();
 
-        println!("{}", secret);
+        println!("{secret}");
         let mut split = secret.split('.');
         assert_eq!(
             split.next().unwrap(),

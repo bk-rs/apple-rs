@@ -1,6 +1,6 @@
 //! [Doc](https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens)
 
-use std::{error, fmt, time::Duration};
+use core::time::Duration;
 
 use chrono::{serde::ts_seconds, DateTime, Duration as ChronoDuration, Utc};
 use jwt::{AlgorithmType, Error as JwtError, Header, PKeyWithDigest, SignWithKey, Token};
@@ -77,9 +77,9 @@ pub enum CreateError {
     MakePKeyFailed(OpensslErrorStack),
     TokenSignFailed(JwtError),
 }
-impl fmt::Display for CreateError {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{:?}", self)
+impl core::fmt::Display for CreateError {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        write!(f, "{self:?}")
     }
 }
-impl error::Error for CreateError {}
+impl std::error::Error for CreateError {}

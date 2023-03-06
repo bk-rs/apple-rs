@@ -1,4 +1,4 @@
-use core::{fmt, future::Future, pin::Pin, time::Duration};
+use core::{future::Future, pin::Pin, time::Duration};
 use std::{sync::Arc, time::SystemTime};
 
 use apple_search_ads_client_secret::{
@@ -151,9 +151,9 @@ pub enum ManagerRequestError {
     AccessTokenRequestFailed(FlowExecuteError),
 }
 
-impl fmt::Display for ManagerRequestError {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{:?}", self)
+impl core::fmt::Display for ManagerRequestError {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        write!(f, "{self:?}")
     }
 }
 impl std::error::Error for ManagerRequestError {}

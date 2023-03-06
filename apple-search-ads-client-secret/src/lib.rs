@@ -1,6 +1,6 @@
 //! [Doc](https://developer.apple.com/documentation/apple_search_ads/implementing_oauth_for_the_apple_search_ads_api)
 
-use core::{fmt, time::Duration};
+use core::time::Duration;
 
 use chrono::{serde::ts_seconds, DateTime, Duration as ChronoDuration, Utc};
 use jsonwebtoken::{encode, errors::Error as JsonwebtokenError, Algorithm, EncodingKey, Header};
@@ -87,9 +87,9 @@ pub enum CreateError {
     MakeEncodingKeyFailed(JsonwebtokenError),
     EncodeFailed(JsonwebtokenError),
 }
-impl fmt::Display for CreateError {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{:?}", self)
+impl core::fmt::Display for CreateError {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        write!(f, "{self:?}")
     }
 }
 impl std::error::Error for CreateError {}
@@ -129,7 +129,7 @@ LaZriCQnnqq4Vx+IscLFcrjBj+ulZzKlUQ==
         eyJhbGciOiJFUzI1NiIsImtpZCI6ImJhY2FlYmRhLWUyMTktNDFlZS1hOTA3LWUyYzI1YjI0ZDFiMiJ9.eyJpc3MiOiJTRUFSQ0hBRFMuMjc0NzhlNzEtM2JiMC00NTg4LTk5OGMtMTgyZTJiNDA1NTc3IiwiaWF0IjoxNjU0NDczNjAwLCJleHAiOjE2NzAwMjU2MDAsImF1ZCI6Imh0dHBzOi8vYXBwbGVpZC5hcHBsZS5jb20iLCJzdWIiOiJTRUFSQ0hBRFMuMjc0NzhlNzEtM2JiMC00NTg4LTk5OGMtMTgyZTJiNDA1NTc3In0.bN3KRWDJft-rjqRbOuuzfsImPT4RPEy01ILYJRBe4v_WJtJdi-7xBpi9UCcSN1WRe3Ozobvou5ruxXjVFnB_6Q
         */
 
-        println!("{}", secret);
+        println!("{secret}");
         let mut split = secret.split('.');
         assert_eq!(
             split.next().unwrap(),
@@ -168,7 +168,7 @@ P3B7ikRQu2OlbrTmLC/MuUpwGrihRANCAARjny/vh5AXIu27mu0Kl5Tg2CBVJRBI
         )
         .unwrap();
 
-        println!("{}", secret);
+        println!("{secret}");
         let mut split = secret.split('.');
         assert_eq!(
             split.next().unwrap(),
