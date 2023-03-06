@@ -168,15 +168,12 @@ static CLIENT_SECRET_STORAGE: Lazy<ArcSwap<ClientSecretStorage>> =
 struct ClientSecretStorage(Option<(Box<str>, IssuedAt)>);
 
 fn get_not_expired_client_secret() -> Option<Box<str>> {
-    match CLIENT_SECRET_STORAGE.load().0.as_ref() {
-        Some((client_secret, issued_at)) => {
-            if let Ok(dur) = SystemTime::now().duration_since(*issued_at) {
-                if dur < (CLIENT_SECRET_EXP_DUR - Duration::from_secs(60 * 10)) {
-                    return Some(client_secret.to_owned());
-                }
+    if let Some((client_secret, issued_at)) = CLIENT_SECRET_STORAGE.load().0.as_ref() {
+        if let Ok(dur) = SystemTime::now().duration_since(*issued_at) {
+            if dur < (CLIENT_SECRET_EXP_DUR - Duration::from_secs(60 * 10)) {
+                return Some(client_secret.to_owned());
             }
         }
-        None => {}
     }
     None
 }
@@ -191,19 +188,16 @@ static ACCESS_TOKEN_STORAGE: Lazy<ArcSwap<AccessTokenStorage>> =
 struct AccessTokenStorage(Option<(ResponseSuccessfulBody, IssuedAt)>);
 
 fn get_not_expired_access_token() -> Option<ResponseSuccessfulBody> {
-    match ACCESS_TOKEN_STORAGE.load().0.as_ref() {
-        Some((body, issued_at)) => {
-            if let Some(body_expires_in) = body.expires_in {
-                if let Ok(dur) = SystemTime::now().duration_since(*issued_at) {
-                    if dur.as_secs() < (body_expires_in as u64 - 60 * 5) {
-                        return Some(body.to_owned());
-                    }
+    if let Some((body, issued_at)) = ACCESS_TOKEN_STORAGE.load().0.as_ref() {
+        if let Some(body_expires_in) = body.expires_in {
+            if let Ok(dur) = SystemTime::now().duration_since(*issued_at) {
+                if dur.as_secs() < (body_expires_in as u64 - 60 * 5) {
+                    return Some(body.to_owned());
                 }
-            } else {
-                return Some(body.to_owned());
             }
+        } else {
+            return Some(body.to_owned());
         }
-        None => {}
     }
     None
 }
