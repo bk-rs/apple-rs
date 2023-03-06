@@ -13,7 +13,7 @@ categories = []
 readme = "README.md"
 
 [dependencies]
-apple-search-ads-client-secret = { version = "0.2", default-features = false }
+apple-search-ads-client-secret = { version = "0.2", default-features = false, path = "../apple-search-ads-client-secret" }
 oauth2-apple = { version = "0.1", default-features = false }
 oauth2-client = { version = "0.1", default-features = false, features = ["with-flow"] }
 
@@ -22,9 +22,9 @@ http-api-isahc-client = { version = "0.2", default-features = false }
 arc-swap = { version = "1", default-features = false }
 once_cell = { version = "1", default-features = false }
 
-async-sleep = { version = "0.2", default-features = false, features = ["timeout"] }
+async-sleep = { version = "0.3", default-features = false, features = ["timeout"] }
 
 [dev-dependencies]
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 
-async-sleep = { version = "0.2", features = ["impl_tokio"] }
+async-sleep = { version = "0.3", features = ["impl_tokio"] }

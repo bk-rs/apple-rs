@@ -17,4 +17,4 @@ name = "apple_siwa_client_secret_gen"
 path = "src/bin/apple_siwa_client_secret_gen.rs"
 
 [dependencies]
-apple-siwa-client-secret = { version = "^0.1", path = "../" }
+apple-siwa-client-secret = { version = "0.1", path = "../" }

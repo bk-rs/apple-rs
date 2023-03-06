@@ -17,4 +17,4 @@ name = "apple_search_ads_client_secret_gen"
 path = "src/bin/apple_search_ads_client_secret_gen.rs"
 
 [dependencies]
-apple-search-ads-client-secret = { version = "^0.2", path = "../" }
+apple-search-ads-client-secret = { version = "0.2", path = "../" }
